@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find `realpath "${1-.}"` -type f | awk -F '/' '{print $NF}' | grep '\.' | grep -v '^\.' | awk -F '.' '{print "."$NF}' | sort | uniq -c | sort -nk1
+
