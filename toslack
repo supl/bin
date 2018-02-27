@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for i in $@; do :; done; SLACK_WEBHOOK=$i
+
+if [ "$SLACK_WEBHOOK" = "" ]; then
+	echo "Usage: slackforwarder <slack webhook>"
+fi
+
+while read line; do
+	curl -so /dev/null -X POST -H "Content-Type: application/json" -d "{\"text\":\"$line\"}" $SLACK_WEBHOOK
+	echo $line
+done
+
