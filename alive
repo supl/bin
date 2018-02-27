@@ -9,8 +9,8 @@ fi
 
 status=`curl -sL -o /dev/null -w %{http_code} $url`
 if [ "$status" = "200" ]; then
-	echo "`date --rfc-3339=second` $url is ALIVE"
+	echo "`date --rfc-3339=second` $url ALIVE"
 else
-	echo "`date --rfc-3339=second` $url is DEAD"
+	echo "`date --rfc-3339=second` $url DEAD"
 fi
 
