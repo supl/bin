@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for i in $@; do :; done; url=$i
+
+if [ "$url" = "" ]; then
+	echo "Usage: alive <URL>"
+	exit
+fi
+
+while true; do
+	status=`curl -sL -o /dev/null -w %{http_code} $url`
+	if [ "$status" = "200" ]; then
+		echo "`date --rfc-3339=second` $url is ALIVE"
+	else
+		echo "`date --rfc-3339=second` $url is DEAD"
+	fi
+	sleep 300
+done
+
