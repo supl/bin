@@ -3,7 +3,7 @@
 for i in $@; do :; done; SLACK_WEBHOOK=$i
 
 if [ "$SLACK_WEBHOOK" = "" ]; then
-	echo "Usage: slackforwarder <slack webhook>"
+	echo "Usage: toslack <slack webhook>"
 fi
 
 while read line; do
