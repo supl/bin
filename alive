@@ -7,7 +7,7 @@ if [ "$url" = "" ]; then
 	exit
 fi
 
-if [ `curl -sL -o /dev/null -w %{http_code} $url` = "200" ]; then
+if [ `curl -ksL -o /dev/null -w %{http_code} $url` = "200" ]; then
 	echo "`date --rfc-3339=second` $url ALIVE"
 else
 	echo "`date --rfc-3339=second` $url DEAD"
