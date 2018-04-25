@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const http = require('http');
+
+const server = http.createServer((req, rsp) => {
+    if (req.headers.host) {
+        rsp.writeHead(301, {
+            Location: `https://${req.headers.host}${req.url}`,
+        });
+    }
+    rsp.end();
+});
+
+server.listen(80);
